@@ -1,0 +1,105 @@
+<?xml version='1.0' encoding='utf-8'?>
+<transformation>
+  <info />
+  <notepads />
+  <steps>
+    <step>
+      <name>Ler vendas CSV</name>
+      <type>CsvInput</type>
+      <description />
+      <GUI>
+        <xloc>100</xloc>
+        <yloc>120</yloc>
+        <draw>Y</draw>
+      </GUI>
+      <filename>${Internal.Entry.Current.Directory}/../dados/vendas.csv</filename>
+      <filename_field />
+      <rownum_field />
+      <include_filename>N</include_filename>
+      <separator>,</separator>
+      <enclosure>"</enclosure>
+      <header>Y</header>
+      <buffer_size>50000</buffer_size>
+      <lazy_conversion>N</lazy_conversion>
+      <add_filename_result>N</add_filename_result>
+      <fields>
+        <field>
+          <name>venda_id</name>
+          <type>Integer</type>
+        </field>
+        <field>
+          <name>data_venda</name>
+          <type>String</type>
+        </field>
+        <field>
+          <name>cliente_id</name>
+          <type>Integer</type>
+        </field>
+        <field>
+          <name>produto_id</name>
+          <type>Integer</type>
+        </field>
+        <field>
+          <name>quantidade</name>
+          <type>Integer</type>
+        </field>
+        <field>
+          <name>preco_unitario</name>
+          <type>Number</type>
+        </field>
+      </fields>
+    </step>
+    <step>
+      <name>Exportar staging</name>
+      <type>TextFileOutput</type>
+      <description />
+      <GUI>
+        <xloc>360</xloc>
+        <yloc>120</yloc>
+        <draw>Y</draw>
+      </GUI>
+      <separator>,</separator>
+      <enclosure>"</enclosure>
+      <header>Y</header>
+      <footer>N</footer>
+      <filename>${Internal.Entry.Current.Directory}/../dados/staging_vendas</filename>
+      <extension>csv</extension>
+      <append>N</append>
+      <file />
+      <fields>
+        <field>
+          <name>venda_id</name>
+          <type>String</type>
+        </field>
+        <field>
+          <name>data_venda</name>
+          <type>String</type>
+        </field>
+        <field>
+          <name>cliente_id</name>
+          <type>String</type>
+        </field>
+        <field>
+          <name>produto_id</name>
+          <type>String</type>
+        </field>
+        <field>
+          <name>quantidade</name>
+          <type>String</type>
+        </field>
+        <field>
+          <name>preco_unitario</name>
+          <type>String</type>
+        </field>
+      </fields>
+    </step>
+  </steps>
+  <order>
+    <hop>
+      <from>Ler vendas CSV</from>
+      <to>Exportar staging</to>
+      <enabled>Y</enabled>
+    </hop>
+  </order>
+  <step_error_handling />
+</transformation>

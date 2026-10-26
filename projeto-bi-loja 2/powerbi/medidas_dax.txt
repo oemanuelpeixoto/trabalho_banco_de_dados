@@ -1,0 +1,8 @@
+-- Importar dados/vendas_dashboard.csv como tabela vendas_dashboard
+Faturamento Total = SUM(vendas_dashboard[faturamento])
+Total de Vendas = DISTINCTCOUNT(vendas_dashboard[venda_id])
+Ticket Médio = DIVIDE([Faturamento Total], [Total de Vendas])
+Itens Vendidos = SUM(vendas_dashboard[quantidade])
+
+-- Visuais sugeridos: cartões (3 indicadores), colunas (categoria x faturamento), linha (ano_mes x faturamento), barras (produto x faturamento), segmentação de categoria.
+-- Ordenar ano_mes crescente (formato AAAA-MM).
